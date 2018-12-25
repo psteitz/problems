@@ -13,7 +13,7 @@ All original materials are licensed under the [Apache License, version 2](https:
 
 ## Bugs, comments, contributions
 
-Thanks in advance for any improvements, especially correcting errors.  Fixes can be  submitted in Github Pull Requests or the GitHub issue tracker can be used to report errors or to suggest improvements.
+Thanks in advance for any improvements, especially correcting errors.  Fixes can be  submitted in [Github Pull Requests](https://github.com/psteitz/problems/pulls) or the [GitHub issue tracker](https://github.com/psteitz/problems/issues) can be used to report errors or to suggest improvements.
 
 New problem contributions are also welcome.  Problems should be submitted as LaTex documents, including supporting files.  Contributors must be able to contribute the problems under the terms of the Apache License, Version 2.0 and all contributions are assumed to be made under these terms.
 
