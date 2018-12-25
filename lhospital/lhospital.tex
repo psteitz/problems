@@ -1,0 +1,33 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\begin{document}
+
+
+\section*{Problem}
+Evaluate $lim_{x\to 0} sin(x)/x$.
+
+This can be evaluated using l'Hospital's rule, which states that if $f$ and $g$ are continuously differentiable at $a$, then $\lim_{x \to 0} {f(a)/g(a)} = f'(0) / g'(0)$.  So $lim_{x\to 0} sin(x)/x = \lim_{x \to 0} {cos(0) / 1} = 1.$
+
+But why is l'Hospital's rule true?  This follows nicely from the definition of the derivative.  Recall that the derivative of $f$ at $x$ is defined by
+$$f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}.$$
+So $$\frac{f'(0)}{g'(0)} = $$ $$\frac{\mathop{\lim}\limits_{h \to 0} \frac {f(0 + h) - f(0)} {h}} {\mathop{\lim}\limits_{h \to 0} \frac {g(0 + h) - g(0)} {h}} = $$ $$\lim_{h \to 0} \frac {f(h) - f(0)} {g(h) - g(0)}$$.
+\end{document}

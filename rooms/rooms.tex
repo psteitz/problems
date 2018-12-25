@@ -1,0 +1,65 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{color}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+\begin{document}
+
+\section*{Problem}
+Joe and Moe purchased a new property to add to their growing hotel chain.  It has three kinds of rooms:  futon, bunk and open plan (basically, no bed).  In their excitement to close the deal, Moe forgot to count the rooms.  Joe did and when Moe asked how many of each kind there were, Joe responded, ``All but 30 rooms are futon, all but 40 are bunk and all but 20 are open plan."  How many rooms are there and how many of each kind?
+\\\\
+The idea for this problem was borrowed from Morning Brew.
+
+\newpage
+\section*{Solution}
+Let $x$ be the number of rooms.  Then $x$ must be the sum of the different room counts, i.e., 
+$$x = (x - 40) + (x -30) + (x - 20)$$
+Solving for $x$ gives $x = 45$ which means there are 45 total rooms, 15 futon rooms, 5 bunk rooms and 25 open plan rooms.
+
+ 
+\end{document}
+

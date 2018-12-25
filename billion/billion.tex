@@ -1,0 +1,32 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\begin{document}
+
+
+\section*{Problem}
+How many proper factors does one billion have?  A \emph{proper factor} of a positive integer $n$ is a positive integer $m$ such that $n = km$ where $k$ is a positive integer greater than $1$ and less than $n$.
+
+\section*{Solution}
+$10^9 = 2^9 \mathord{\cdot} 5^9.$  Every proper factor of $10^9$ must have the form $2^m \mathord{\cdot} 5^n$ where $m$ and $n$ are between $0$ and $9$.  The two combinations $m = n = 0$ and $m = n = 9$ must be excluded, but all others are valid and distinct factors.  They are all distinct because $2$ and $5$ are primes (so two different products of them to different exponents cannot be the same, by uniqueness of prime factorization).  Therefore, there are exactly $10 \mathord{\cdot} 10 - 2 = 98$ proper factors of one billion.
+
+\end{document}
+

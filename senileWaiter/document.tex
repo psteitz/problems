@@ -1,0 +1,83 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\urlstyle{same}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+\begin{document}
+
+\section*{Senile Waiter Problem}
+Suppose that 4 people go out to dinner together and they order 4 different meals from a nice but senile waiter who remembers and orders the correct meals but then distributes them randomly.  What is the probability that noone gets the meal that they ordered?
+
+\section*{bonus}
+Generalized your solution to $n$ diners - i.e., what is the probility that a random permutation of $n$ has no fixed points?
+
+\newpage
+\section*{Solution}
+Label the meals $0,1,2,3$.  Consider rearranged sequences as ways the waiter can distribute the meals.  For example, $(1,0,3,2)$ represents the delivery where the waiter switches diner 0 and diner 1's meals and does the same for 2 and 3.  There are $4\times3\times2\times1= 24$ ways to rearrange $0,1,2,3$.  We need to count how many of these don't leave any of the original digits in their original place.  In mathematical terms, we need to count $d_4$ = the number of permutations of $4 = \{0, 1, 2, 3\}$ that have no fixed points.  The swapping example above is one such permutation. 
+\\\\
+Now $d_4$ equals  24 minus the number of permutations that have fixed points. We count the complement by partitioning on the number of fixed points.  For $n = 1, 2, 3$ let $c_n$ be the number of permutations of 4 that have exactly $n$ fixed points.  Then the number the number of permutations of $4$ with no fixed points equals $$ 24 - \sum_{i=1}^{3}{c_i}$$
+Now we compute the $c_i$.  Consider $c_{1}$.  We can count this by partitioning on the element that is fixed and recursing on $n$.  There are $ \binom{4}{1} = 4$ choices for the fixed point.  The permutations that fix just one point are extensions of permutations of $n - 1 = 3$ with no fixed points.  So if we define $d_n$ to be the number of permutations of $n$ that have no fixed points, then 
+$$c_{1} =  \binom{4}{1} d_{3}$$
+$$c_{2} = \binom{4}{2} d_{2}$$
+$$c_{3} = \binom{4}{3} d_{1} = 4 \times 0 = 0$$
+$$c_{4} = 1$$
+In each case, we count the number of ways to choose the fixed points and multiply by the number of permutations of the smaller set with no fixed points.  Now $d_{2}$ is the number of permutations of $\{0,1\}$ that have no fixed points.  There are two permutations of  $\{0,1\}$, viz., the identity and the one that swaps the pair.  The swap has no fixed points, so $d_{2} = 1$.  You can see easily by counting that $d_{3}$ is 2 or look at it as $$3\times2 =6 - ({\binom{3}{1} d_{2}+ 1) =  6 -({3} \times{1}+ 1} ) = 2$$
+\\\
+Now we can write $$d_4 = 24 - (c_1 + c_2 + c_3 + c_4) = 24 - (4 \times 2 + 6 \times 1 + 1) = 24 - 15 = 9$$
+So the probablility of a complete "derangement" of the meals is 9/24 = 3/8.
+
+\end{document}

@@ -1,0 +1,62 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{color}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+\begin{document}
+
+\section*{Problem}
+Moe's revolutionary ``oreo design" hotel has become so successful that his VBA-powered MSFT Access CRS is having trouble handling the transaction volume coming at it when both of his room service / sales agents (Huey and Looey) take calls at the same time.  The system doesn't have any logging and doesn't store enough info to count transactions, but Joe found a way to sample counts of transactions per hour throughout the day.  Using his Colorado City HS AP Stats training, Joe estimated a polynomial regression model from the data and came up with the following model for the rate of incoming transactions per hour (in thousands) as a function of time over the period when Huey and Looey answer the phone (between 2 and 6 in the afternoon):
+$$r(t) = -t^2 +8t - 12$$
+where t is measured in hours starting at $t = 2$ and ending at $t = 6$.  How many total transactions should Moe expect to receive between 2 and 6?
+
+\newpage
+\section*{Solution}
+$\int_{2}^{6}{-t^2 + 8t - 12}dt = \left[x^3/3 + 4x^2 - 12x\right]_2^6 = 32/3$ thousand transactions.
+
+\end{document}
+

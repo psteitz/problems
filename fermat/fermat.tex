@@ -1,0 +1,74 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{color}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+\begin{document}
+
+\section*{Problem}
+Flush with his success in the hospitality business, Moe decides to follow Bezos and Musk into more celestial pursuits.  But instead of something easy like rocket science, he tries his hand at pure mathematics.  According to theorem stated by Pierre de Fermat in the 17th century but not proven until the end of the 20th century, the following equation has no solutions in the integers for $n>2$:
+$$a^n + b^n = c^n$$
+So for example, the theorem means that there  are no three integers $a$, $b$ and $c$ such that $a^3 + b^3 = c^3.$
+\\\\
+Moe thinks the 20th century proof is ``fake math" and he claims to have found a counter-example.  He says that with $a = 91$, $b=56$ and $c=121$ there is an $n$ such that the equation holds.  Joe asks what $n$ is and Moe says he did it in his head and forgot.  Joe thinks a little and says that there can't be any such $n$ for those three numbers.  Explain why Joe is right.
+\\\\
+This problem was adapted from a problem from Car Talk.
+
+\newpage
+\section*{Solution}
+The key here is to look at the prime factorization of $a$, $b$ and $c$.
+\\
+$a = 7 \times 13$
+\\
+$b = 7 \times 2^3$
+\\
+$c = 11^2$
+\\
+Now suppose that for some $n$, $a^n + b^n = c^n$.  That means  \\ $(7  \times 13)^n + (7 \times2^3)^n = (11^2)^n$.  Now you can factor out the $7$ from the terms on the left and distribute the exponents, giving $7^n(13^n + 2^{3n}) = 11^{2n}$.  But that is not possible because that would imply that $7$ is a factor of $11^{2n}$ which is impossible by uniqueness of prime factorization.
+ 
+\end{document}
+

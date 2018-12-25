@@ -1,0 +1,51 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\begin{document}
+
+
+\section*{Socks}
+Every morning when he wakes up, Moe reaches into his sock drawer and randomly picks two socks to wear. Each sock in the drawer has only one partner - i.e., he does not have multiple copies of any pair.
+\begin{enumerate}[label=(\alph*)]
+\item If there are two pairs of socks in the drawer, what is the probability that his random grab results in a pair?
+\item Let $n$ be the number of pairs of socks in the drawer.  Find a formula for $p(n)$ = the probability that 2 randomly chosen socks from among the $2n$ in the drawer match.
+\end{enumerate}
+\section*{Bonus}
+\begin{enumerate}[label=(\alph*)]\addtocounter{enumi}{2}
+\item Moe's coworkers get tired of seeing Moe come in with mismatched socks all the time, so they decide to buy him a second pair exactly like each pair that he has. So now he has $2n$ pairs of socks (so a total of $4n$ socks) and each sock now has three possible matches.  What is the formula for $p(n)$ under this assumption?
+\item Moe's teammates are pleased with the results of the sock augmentation, but they find that most days Moe's socks still don't match.  Joe claims that if they just double down on the strategy of buying more rounds of copies of the original $n$ pairs, they will eventually reach the point where most days Moe's socks will match and in fact for any $p < 1$, there is a number of rounds after which the probability of a match each day is at least $p.$  Is Joe right? 
+\end{enumerate}
+
+\newpage
+\section*{Solution (part a)}
+Give a total of 4 socks in the drawer, there are ${4 \choose 2} = 6$ 2-sock combinations that Moe can pull out. (Imagine you can tell all socks apart. When selecting two of them, Moe has 4 choices for the first one times 3 for the second, assuming the order is significant.  The order is not significant,  so you need to divide by the number of ways the two socks can be ordered, which is 2, so you get $({4 \times 3})/2 = 6$.  This is how the general formula for ${n \choose k} =$ the number of $k$ element subsets that can be selected from an $n$-element set is derived.)  Among these 6 combinations, 2 of them are pairs. Since all combinations are equally likely, the probability of Moe selecting a pair is $2/6 = 1/3.$
+
+\section*{Solution (part b)}
+Given $n$ pairs, there are $2n$ total socks to choose from, so there are ${2n \choose 2} = \frac{2n(2n - 1)}{2} = n(2n - 1)$ possible two-sock combinations that Moe can grab.  Since $n$ of these are pairs and all are again equally likely, it follows that $$p(n) = \frac{n}{n(2n - 1)} = 1 / (2n - 1).$$
+
+\section*{Solution (part c)}
+Now Moe has $4n$ total socks, so there are ${4n \choose 2} = \frac{4n(4n - 1)}{2}$ possible 2-sock combinations.  Now each of the $n$ duplicated pairs creates ${4 \choose 2} = 6$ good combinations.  So the probability of a match is now $\frac{6n}{\frac{4n(4n - 1)}{2}} = \frac{3}{4n - 1}.$
+
+\section*{Solution (part d)}
+Joe is wrong. As the number of copies increases, probability of a match will increase, but it is bounded above by $1/n.$  This is easy to see using a simpler approach to parts a-c. Once Moe has selected one sock, the probability that he will end with a match equals the probability that his next selection is from the same pair. So for example in part c, that probability is (number of socks of the same kind) / (total number of remaining socks) $= 3/(4n-1)$.  So if $k$ is the number of copies, the probability of a match is $(2k - 1) / (2kn - 1).$
+ 
+\end{document}
+

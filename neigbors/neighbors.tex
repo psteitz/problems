@@ -1,0 +1,60 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{color}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+\begin{document}
+
+\section*{Problem}
+Matty has decided that she may as well get into the hospitality business, given the growing housing needs of her family.  Huey has developed an innovative building design that allows each floor with rooms on it to be a 5 x 5 block with rooms arranged in a grid.  So imagine a checkerboard with 5 rows and 5 columns.  Their awesome Pegs++ PMS / CRS combo allows them to book whole floors for groups.  One day, a very quirky group of "foreign" (as in from outside Colorado City) tourists arrive and they don't like their assigned rooms.  In particular, each person prefers any of the rooms adjacent to the one they have assigned (right, left, up or down, not diagonal).  What is the minimum number of moves that Huey has to execute in Pegs++ to get each person in a room that they prefer?
+
+\newpage
+\section*{Solution}
+If it was possible to do, this could be done in 25 moves - just find an arrangement that works and move each person to their new place.  The problem is, \emph{there is no way to do this.}  To see why this is the case, start putting letters in the boxes, alternating A's and B's.  So the top row should go A,B,A,B,A and the next row row should be B,A,B,A,B, etc.  If you fill the entire grid in, you will see that in order for everyone to be happy, each A needs to move to a B slot and vice-versa.  The problem is, there are 13 A's and only 12 B's.  So somebody has to be unhappy.
+ 
+\end{document}
+

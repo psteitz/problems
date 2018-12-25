@@ -1,0 +1,24 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\begin{document}
+\textit{Intuitive, non-calculus answer:} Moe's average speed over the hour was 60 mph.  Since he started from rest and ended at rest, there must have been some time interval over which his speed was less than 60mph.  But if he never exceeded 60mph, he could never "make up" the lost distance from the time when he was accelerating or decelerating.
+
+\textit{Calculus answer: } Let $s(t)$ be the distance Moe's car has traveled at time $t$ minutes, so $s(0) = 0$ and $s(60)= 60$.  Let $v(t) = s'(t)$ be Moe's velocity at time $t$ in minutes (so $v(t)$ is measured in miles / minute).  Then $s(t) = \int_{0}^{t} v(u) du$. Since Moe had to accelerate to 60 mph, there has to be some $t_0>0$ such that for $0 < u < t_0$, we have $v(u) \leq 50$.  Then $s(60) = \int_{0}^{60} v(u) du = \int_{0}^{t_0} v(u) du + \int_{t_0}^{60} v(u) du$.  But each of these integrals is bounded above by the maximum value of the function over the interval times the length of the interval, so $\int_{0}^{t_0} v(u) du + \int_{t_0}^{60} v(u) du \leq (5/6) t_0 + 1(60 - t_0) < 60$ This means that under the assumption that Moe's velocity never exceeded 60mph, he must have traveled a distance strictly less than 60 miles.
+
+\textit{Bonus question: } Suppose Moe was driving a 1952 Studebaker that goes from 0 to 60 in one minute.  Assume his acceleration is linear - i.e., after 10 seconds he is going 10 mph, after 20 seconds 20 mph, 30 seconds 30 mph, etc. - and he goes at a constant speed once he gets to 60mph.  Assume his deceleration at the end is also linear. How far could he go in an hour with this speed regimen (one minute accelerating to 60, 58 minutes at 60, 1 minute decelerating to 0)?
+
+\end{document}

@@ -1,0 +1,39 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\begin{document}
+
+
+\section*{Problem}
+Find all triples of integers that satisfy the condition that the square of the difference between any two of them equals the third one.
+
+\section*{Bonus}
+Present $100$ as a sum of positive integers such that their product is maximal. 
+
+\section*{Source (both problems)}
+Mathematics Olympiad - Grades 5-11, Vologda, Russia, 1996
+
+\newpage
+\section*{Solution}
+First, lets consider the case where the three numbers are distinct.  In that case, we can label them so that $a$ is the smallest, $b$ is the middle and $c$ is the largest.  Since each is a square, all must be non-negative, so we must have $0 \leq a < b < c$. Now $(c - a) ^ 2 = b$, and of all the pairwise differences, $(c - a)$ must be the largest (since $(c - a) = (b - a) + (c - b)$. But this means that $b$ must be the largest, which is only possible if $b = c$. So the numbers can't be distinct. So they must all be the same or two of them must be equal.  All 0's works and is the only solution with all of them the same (because all the same means all differences $0$, which means all values $0$). If two of them are the same, then the other one must be $0$ and the common value of the other two must equal its own square. The only non-zero integer with this property is $1$, so all possible ordered triples are $\{<0,0,0>, <0,1,1>, <1,0,1>, <1,1,0>\}$.
+ 
+\end{document}
+
