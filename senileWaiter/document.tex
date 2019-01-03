@@ -63,7 +63,7 @@
 Suppose that 4 people go out to dinner together and they order 4 different meals from a nice but senile waiter who remembers and orders the correct meals but then distributes them randomly.  What is the probability that noone gets the meal that they ordered?
 
 \section*{bonus}
-Generalized your solution to $n$ diners - i.e., what is the probility that a random permutation of $n$ has no fixed points?
+Generalized your solution to $n$ diners - i.e., what is the probability that a random permutation of $n$ has no fixed points?
 
 \newpage
 \section*{Solution}
@@ -78,8 +78,49 @@ $$c_{4} = 1$$
 In each case, we count the number of ways to choose the fixed points and multiply by the number of permutations of the smaller set with no fixed points.  Now $d_{2}$ is the number of permutations of $\{0,1\}$ that have no fixed points.  There are two permutations of  $\{0,1\}$, viz., the identity and the one that swaps the pair.  The swap has no fixed points, so $d_{2} = 1$.  You can see easily by counting that $d_{3}$ is 2 or look at it as $$3\times2 =6 - ({\binom{3}{1} d_{2}+ 1) =  6 -({3} \times{1}+ 1} ) = 2$$
 \\\
 Now we can write $$d_4 = 24 - (c_1 + c_2 + c_3 + c_4) = 24 - (4 \times 2 + 6 \times 1 + 0 +  1) = 24 - 15 = 9$$
-So the probablility of a complete ``derangement" of the meals is 9/24 = 3/8.
+So the probability of a complete ``derangement" of the meals is 9/24 = 3/8.
 
 \section*{Bonus solution}
+The approach used above could be extended to provide a recursive formula.  I can't see an easy way to solve the resulting recursion though.  I wonder if someone else can.  The standard way to solve this problem is to use inclusion-exclusion to count the number of permutations that have fixed points (i.e., the ones where at least one diner gets the right meal) and then compute 1 - P(there is a fixed point).  There is a beautiful punch line below that I can't claim credit for nor can I remember where I first saw it.
 
-\end{document}
+Let $P$ be the set of all permutations of $n = \{0, ... , n -1 \}$ and let $A \subset P$ be those that have at least one fixed point.  Then for $i = 0,...,n-1$ , define $$A_i = \{p \in P : p(i) = i\}$$ so $A_i$ are the permutations that fix i.  It's easy to see that $$A=\bigcup\limits_{i=0}^{n-1} A_{i}$$ (nice exercise to prove this).
+
+We count the union $A = \bigcup\limits_{i=0}^{n-1} A_{i}$ using  $\href{https://en.wikipedia.org/wiki/Inclusion%E2%80%93exclusion_principle} {\textrm{inclusion / exclusion.}}$
+\\
+Inclusion-exclusion allows us to count the union of the $A_i$ by starting with $\sum_{i=0}^{n-1} |A_{i}| $ and then correcting it by subtracting cardinalities of pairwise intersections, then correcting that by adding three-way intersection cardinalities, then subtracting.... all the way until we get to the intersection of all of the $A_i$ .
+\\
+\\
+$|A| = \sum_{i=0}^{n-1} |A_{i}| -  \\ 
+\indent
+\sum_{i < j} {|A_i \cap A_j|} + \\
+\indent
+\sum_{i < j < k} {|A_i \cap A_j\cap A_k|} - \\
+\indent
+ ... (-1)^j \sum_{ i_0 < ...<i_{j-1}}{ |A_{i_0} \cap A_{i_1} ... \cap A_{i_{j-1}}|} + ...\\
+ \indent
+(-1)^{n-1}|A_{0} \cap ... \cap A_{n-1}|$
+\\
+The notation above requires clarification. The $i<j$ used to define the second sum means that the sum is taken over all possible pairs of sets from the $A_i$.  Similarly, ${i < j < k}$ on the next sum means all three-way intersections, and so on up to the last term, which will be $\pm 1$ times the cardinality of the intersection of all of $A_i$.  In the same way, $ i_0 < ...<i_{j-1}$ refers to an arbitrary $j-$way intersection among the $A_i$ and in this context $j$ is an arbitrary integer between 3 and $n-1$ (inclusive).  Using $<$ in all of the sum bounds makes sure that each distinct combination of indices is counted exactly once.
+
+All of the $A_i$ have the same cardinality.  That cardinality is $(n-1)!$.  The best way to see this is to consider that a permutation of $\{0, ...,  n - 1\}$ that fixes $i$ is an extension of a permutation of the other $n - 1$ elements.  Each distinct permution of the elements other than $i$ extends to exactly one permutation of $n$ that fixes $i$.  So the number of permutations of $n$ that fix a given single element is the same as the number of permutations of $n - 1$.
+Therefore,
+$$\sum_{i=0}^{n-1} |A_{i}| = n(n-1)!$$
+The sum includes $n$ terms, each with the value $(n - 1)!$
+
+Similarly, a permutation of $n$ that fixes a two-element subset is an extension of exactly one permutation of $n-2$, so every pairwise intersection of the $A_i$ has cardinality $()n - 2)!$.  There are $\binom{n}{2} $distinct pairwise intersections among the $n$ sets.  All have cardinality $(n - 2)!$.  Therefore,
+$$ \sum_{i < j} {|A_i \cap A_j|}  = \binom{n}{2} {(n - 2)}!$$
+
+In the same way, 
+$$\sum_{ i_0 < ...<i_{j-1}}{ |A_{i_0} \cap A_{i_1} ... \cap A_{i_{j-1}}|} = \binom{n}{j}(n - j)!$$
+
+There is exactly one permutation that fixes all of the elements of $n$ (the identity), so last term, 
+$$(-1)^{n-1}|A_{0} \cap ... \cap A_{n-1}|$$ 
+is either $1$ or $-1$ depending on whether $n$ is odd ($1$) or  even ($-1$).
+
+Putting this all together,  we have $$|A| = \sum_{i=1}^{n}(-1)^{i-1}\binom{n}{i}(n - i)! =  \sum_{i=1}^{n}(-1)^{i-1}(n!/(n - i)!i!)(n - i)!  = n!  \sum_{i=1}^{n}(-1)^{i-1}/i!$$ 
+
+The solution is therefore $$1 - |A|/n! = 1 - (n!  \sum_{i=1}^{n}(-1)^{i-1}/i)/n! = 1 - \sum_{i=1}^{n}(-1)^{i-1}/i! $$
+
+It is interesting to consider what happens to this probability as $n$ gets large.  Does it go to 0 or 1, converge to some value between or just bounce around?  A beautiful observation that I don't know who to credit for is that the solution above is the $nth$ partial sum of the Taylor Series for $e^x$ evaluated at $x=-1$.  The Taylor series for $e^x$ is $1 + x + x^2 / 2! + x^3 / 3! + ... + x^n/n! + ...$.  So the probabilities converge to $e^{-1} = 1/e.$
+
+\end{document} 
