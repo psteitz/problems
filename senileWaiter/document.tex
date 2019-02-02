@@ -117,7 +117,7 @@ There is exactly one permutation that fixes all of the elements of $n$ (the iden
 $$(-1)^{n-1}|A_{0} \cap ... \cap A_{n-1}|$$ 
 is either $1$ or $-1$ depending on whether $n$ is odd ($1$) or  even ($-1$).
 
-Putting this all together,  we have $$|A| = \sum_{i=1}^{n}(-1)^{i-1}\binom{n}{i}(n - i)! =  \sum_{i=1}^{n}(-1)^{i-1}(n!/(n - i)!i!)(n - i)!  = n!  \sum_{i=1}^{n}(-1)^{i-1}/i!$$ 
+Putting this all together,  we have $$|A| = \sum_{i=1}^{n}(-1)^{i-1}\binom{n}{i}(n - i)! =  \sum_{i=1}^{n}(-1)^{i-1}\frac{n!}{(n - i)!i!}(n - i)!  = n!  \sum_{i=1}^{n}(-1)^{i-1}/i!$$ 
 
 The solution is therefore $$1 - |A|/n! = 1 - (n!  \sum_{i=1}^{n}(-1)^{i-1}/i)/n! = 1 - \sum_{i=1}^{n}(-1)^{i-1}/i! $$
 
