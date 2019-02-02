@@ -9,13 +9,14 @@ import org.hipparchus.util.CombinatoricsUtils;
 public class SenileWaiter {
 
     /**
-     * Compute the number of permutations of cardinality that have the given
-     * number of fixed points.
+     * Compute the number of permutations of a set of size {@code cardinality}
+     * that have the given number of fixed points.
      *
      * @param numberOfFixedPoints number of fixed points
      * @param cardinality total number of elements
-     * @return the number of permutations of cardinality that have
-     *         numberOfFixedPoints fixed points
+     * @return the number of permutations of of a set of size
+     *         {@code cardinality} that have {@code numberOfFixedPoints} fixed
+     *         points
      */
     public double frequency(int numberOfFixedPoints, int cardinality) {
         if (numberOfFixedPoints > cardinality) {
@@ -28,17 +29,19 @@ public class SenileWaiter {
         final double fixedPointSelections = CombinatoricsUtils
             .binomialCoefficientDouble(cardinality, numberOfFixedPoints);
 
-        // Multiply by the number of ways can the others can be deranged
+        // Multiply by the number of ways the others can be deranged
         return fixedPointSelections *
                derangements(cardinality - numberOfFixedPoints);
     }
 
     /**
-     * Compute the number of derangements of cardinality. A derangement is a
-     * permutation with no fixed points.
+     * Compute the number of derangements of a set with {@code cardinality}
+     * elements. A derangement is a permutation (one-to-one, onto mapping) with
+     * no fixed points.
      *
-     * @param cardinality number of elements
-     * @return the number of derangements of a list of length cardinality
+     * @param cardinality set size
+     * @return the number of derangements of a set with {@code cardinality}
+     *         elements
      */
     public double derangements(int cardinality) {
         // Return quickly for cardinality <= 2
@@ -54,6 +57,9 @@ public class SenileWaiter {
         //
         // Complement is 1 fixed point + ... + cardinality fixed points
         double count = 1; // Identity - all fixed points
+        // For each i = 1, ..., cardinality - 1, the number of permutations with
+        // i fixed points is the number of i-element subsets in a
+        // cardinality-sized set times derangements(cardinality - i).
         for (int i = 1; i <= cardinality; i++) { //
             count += CombinatoricsUtils.binomialCoefficientDouble(cardinality,
                                                                   i) *
@@ -62,6 +68,33 @@ public class SenileWaiter {
         return CombinatoricsUtils.factorialDouble(cardinality) - count;
     }
 
+    /**
+     * Generates {@code iterations} random permutations of a set with
+     * {@code cardinality} elements and keeps track of how many permutations fix
+     * i points for i = 0, ..., {@code cardinality}. Returns a map of
+     * {@code <Integer,
+     * Double>} where the keys are numbers of fixed points and the values are
+     * estimated probabilities that a random permutation has the given number of
+     * fixed points.
+     * <p>
+     * More precisely, the keyset of the returned map is {@code {0,...,
+     * cardinality}} and for each i = 0, ..., cardinality, the value associated
+     * with i is the number of simulated permutations that have exactly i fixed
+     * points divided by the number of samples taken ({@code iterations}). So
+     * if @code{<i, p>} is in the map, that means that the proportion of all
+     * simulated permutations that fixed exactly i points was p.
+     * <p>
+     * The returned map viewed as a function from {0, ..., cardinality} to [0,
+     * 1] is an estimate of the probability mass function for the random
+     * variable defined as the number of points fixed by a randomly selected
+     * permutation of a set of size {@code cardinality}.
+     * 
+     * @param cardinality
+     * @param iterations
+     * @return a map of <Integer,Double> mapping numbers of fixed points to
+     *         simulated probability that a random permutation has that number
+     *         of fixed points
+     */
     public Map<Integer, Double> simulatedPmf(int cardinality, long iterations) {
         final HashMap<Integer, Double> out = new HashMap<>();
         long ct = 0;
