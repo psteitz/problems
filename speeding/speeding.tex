@@ -1,6 +1,11 @@
 \documentclass[11pt,a4paper]{report}
 \usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
 \usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{color}
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
@@ -14,11 +19,43 @@
 \theoremstyle{remark}
 \newtheorem*{rem}{Remark}
 \newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
 \begin{document}
+	
+\section*{Problem}
+Moe is driving to visit his brother Joe.  They live in one of those awful East Coast burgs where you have to pay tolls to drive anywhere.  He stops at a toll booth at noon and gets a ticket (old school, no EZ-pass).  The timestamp on the ticket says 12:00PM.  An hour later he has to stop again to pay another toll.  It turns out that the other toll booth is exactly 60 miles from the last one.  He arrives there at exactly 1:00PM.  He gives the public servant in the tollbooth the ticket and, to his surprise, he gets a speeding citation. He says, “Dude, the speed limit is 60MPH. I went 60 miles in an hour.  What is your problem?”  Explain what is going on here and why.
+
+\section*{Solution}
 \textit{Intuitive, non-calculus answer:} Moe's average speed over the hour was 60 mph.  Since he started from rest and ended at rest, there must have been some time interval over which his speed was less than 60mph.  But if he never exceeded 60mph, he could never "make up" the lost distance from the time when he was accelerating or decelerating.
 
 \textit{Calculus answer: } Let $s(t)$ be the distance Moe's car has traveled at time $t$ minutes, so $s(0) = 0$ and $s(60)= 60$.  Let $v(t) = s'(t)$ be Moe's velocity at time $t$ in minutes (so $v(t)$ is measured in miles / minute).  Then $s(t) = \int_{0}^{t} v(u) du$. Since Moe had to accelerate to 60 mph, there has to be some $t_0>0$ such that for $0 < u < t_0$, we have $v(u) \leq 50$.  Then $s(60) = \int_{0}^{60} v(u) du = \int_{0}^{t_0} v(u) du + \int_{t_0}^{60} v(u) du$.  But each of these integrals is bounded above by the maximum value of the function over the interval times the length of the interval, so $\int_{0}^{t_0} v(u) du + \int_{t_0}^{60} v(u) du \leq (5/6) t_0 + 1(60 - t_0) < 60$ This means that under the assumption that Moe's velocity never exceeded 60mph, he must have traveled a distance strictly less than 60 miles.
 
 \textit{Bonus question: } Suppose Moe was driving a 1952 Studebaker that goes from 0 to 60 in one minute.  Assume his acceleration is linear - i.e., after 10 seconds he is going 10 mph, after 20 seconds 20 mph, 30 seconds 30 mph, etc. - and he goes at a constant speed once he gets to 60mph.  Assume his deceleration at the end is also linear. How far could he go in an hour with this speed regimen (one minute accelerating to 60, 58 minutes at 60, 1 minute decelerating to 0)?
-
 \end{document}
