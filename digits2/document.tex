@@ -64,11 +64,15 @@ Find the smallest number that is divisible by all of the digits 2, ..., 9.
 \\\\
 This problem is from \href{https://www.morningbrew.com} {The Morning Brew}.
 
-\newpage
-\section*{Solution}
-Our strategy will be to keep track of the required prime factors and their highest exponents.  Suppose that $x$ is divisible by each number in $D = {2, ..., 9}.$  Then for each $d$ in $D$, $x$'s prime factorization must include all of the primes in $d$'s prime factorization with equal or greater exponents. 
-\\
-Starting with 2, that adds $2^1$ to the required primes in $x$.  Next is 3, where we add a similar term for 3.  Continuing, 4 ups the required exponent on 2 to 2, 5 adds $5^1$, 6 is covered (already have 2 and 3 required), 7 adds $5^1$, 8 ups the exponent on 2 to 3,  and 9 ups the exponent on 3 to 2.  Putting this all together, to be divisible by each of the digits, $x$ must be at least
-$$ 2^{3}3^{2}5^{1}7^{1} = 2520 $$
+\section*{Solution} Our strategy will be to keep track of the required
+prime factors and their highest exponents.  Suppose that $x$ is divisible by
+each number in \\ $D = \{2, ..., 9\}.$  Then for each $d$ in $D$, $x$'s prime
+factorization must include all of the primes in $d$'s prime factorization with
+equal or greater exponents.  \\ Starting with 2, that adds $2^1$ to the required
+primes in $x$.  Next is 3, where we add a similar term for 3.  Continuing, 4 ups
+the required exponent on 2 to 2, 5 adds $5^1$, 6 is covered (already have 2 and
+3 required), 7 adds $5^1$, 8 ups the exponent on 2 to 3,  and 9 ups the exponent
+on 3 to 2.  Putting this all together, to be divisible by each of the digits,
+$x$ must be at least $$ 2^{3}3^{2}5^{1}7^{1} = 2520 $$
 
 \end{document}
