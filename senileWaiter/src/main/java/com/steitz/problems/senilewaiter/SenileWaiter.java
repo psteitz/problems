@@ -37,7 +37,9 @@ public class SenileWaiter {
     /**
      * Compute the number of derangements of a set with {@code cardinality}
      * elements. A derangement is a permutation (one-to-one, onto mapping) with
-     * no fixed points.
+     * no fixed points. For example, the function f from {0, 1, 2} to itself
+     * defined by f(0) = 1, f(1) = 2, f(2) = 0 is a derangement of 3
+     * (set-theoretically, 3 is the set {0, 1, 2}).
      *
      * @param cardinality set size
      * @return the number of derangements of a set with {@code cardinality}
@@ -114,8 +116,9 @@ public class SenileWaiter {
             ct++;
         }
         // Compute densities and return these in the map
+        final double universe = (double) iterations;
         for (int i = 0; i <= cardinality; i++) {
-            out.put(i, counts[i] / (double) iterations);
+            out.put(i, counts[i] / universe);
         }
         return out;
     }
