@@ -25,7 +25,8 @@
 \section*{Problem}
 Evaluate $lim_{x\to 0} sin(x)/x$.
 
-This can be evaluated using l'Hospital's rule, which states that if $f$ and $g$ are continuously differentiable at $a$, then $\lim_{x \to 0} {f(a)/g(a)} = f'(0) / g'(0)$.  So $lim_{x\to 0} sin(x)/x = \lim_{x \to 0} {cos(0) / 1} = 1.$
+\section*{Solution}
+This can be evaluated using l'Hospital's rule, which states that if $f$ and $g$ are continuously differentiable at $a$, and  $\lim_{x \to a} f(x) = 0 =  \lim_{x \to a} g(x)$ then $\lim_{x \to a} {f(x)/g(x)} = f'(0) / g'(0)$.  So $lim_{x\to 0} sin(x)/x = \lim_{x \to 0} {cos(0) / 1} = 1.$
 
 But why is l'Hospital's rule true?  This follows nicely from the definition of the derivative.  Recall that the derivative of $f$ at $x$ is defined by
 $$f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}.$$
