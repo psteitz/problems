@@ -18,11 +18,13 @@
 \newtheorem*{note}{Note}
 \begin{document}
 
-\textit{Problem:} Find a function $f(x_0, ..., x_{n-1})$ that maps finite sequences $<x_1, ..., x_{n-1}>$ of positive integers one-to-one into the integers.  From a programmer's perspective, this means find a function that takes a variable number of positive integer parameters and returns a value that is unique to the sequence.  For example, the function $f(x_0, ..., x_{n-1}) = \sum_{i=0}^{n-1}{x_i}$ does not work, since with $f$ defined this way $f(1,2,3)$ returns the same value as $f(3,3)$.
+\section*{Problem}
+Find a function $f(x_0, ..., x_{n-1})$ that maps finite sequences $<x_1, ..., x_{n-1}>$ of positive integers one-to-one into the integers.  From a programmer's perspective, this means find a function that takes a variable number of positive integer parameters and returns a value that is unique to the sequence.  For example, the function $f(x_0, ..., x_{n-1}) = \sum_{i=0}^{n-1}{x_i}$ does not work, since with $f$ defined this way $f(1,2,3)$ returns the same value as $f(3,3)$.
 
 What I am asking you to define here is essentially a \textit{guaranteed unique} hash function.
 
-\textit{Solution (Gödel):} Let $p_0, p_1, ..., p_n, p_{n+1}, ...$ be a list of the (infinitely many) prime numbers in ascending order.  So $p_0 = 2, p_1 = 3$ and so on.  Define 
+\section*{Solution}
+Let $p_0, p_1, ..., p_n, p_{n+1}, ...$ be a list of the (infinitely many) prime numbers in ascending order.  So $p_0 = 2, p_1 = 3$ and so on.  Define 
 $$f(x_0, ..., x_{n-1}) = p_0^{x_0}p_1^{x_1}...p_{n-1}^{x_{n-1}}$$
 $f$ maps $<x_1, ..., x_{n-1}>$ to the product of the first $n-1$ primes with exponents equal to the corresponding numbers in the sequence.  For example, $f(3,2,1) = 2^{3} \times 3^{2} \times 5^{1} = 380.$
 This function is 1-1 because of the uniqueness of prime factorization (the Fundamental Theorem of Arithmetic).  If $f(x_0, ..., x_{n-1}) = f(y_0, ..., y_{m-1})$ then $p_0^{x_0}p_1^{x_1}...p_{n-1}^{x_{n-1}} = p_0^{y_0}p_1^{y_1}...p_{m-1}^{x_{m-1}}$; but this means that both of these expressions are prime factorizations of the same number.  By the uniqueness of prime factorization, it follows that $n = m$ and all of the exponents are the same, which means for all $i = 0, ..., n-1, x_i = y_i$, i.e., the sequences are the same.
