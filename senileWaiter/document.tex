@@ -65,7 +65,6 @@ Suppose that 4 people go out to dinner together and they order 4 different meals
 \section*{bonus}
 Generalized your solution to $n$ diners - i.e., what is the probability that a random permutation of $n$ has no fixed points?
 
-\newpage
 \section*{Solution}
 Label the meals $0,1,2,3$.  Consider rearranged sequences as ways the waiter can distribute the meals.  For example, $(1,0,3,2)$ represents the delivery where the waiter switches diner 0 and diner 1's meals and does the same for 2 and 3.  There are $4\times3\times2\times1= 24$ ways to rearrange $0,1,2,3$.  We need to count how many of these don't leave any of the original digits in their original place.  In mathematical terms, we need to count $d_4$ = the number of permutations of $4 = \{0, 1, 2, 3\}$ that have no fixed points.  The swapping example above is one such permutation. 
 \\\\
