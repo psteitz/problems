@@ -9,7 +9,7 @@ Each directory contains the files associated with a problem. The .tex file conta
  
 ## License / Copyright
 
-All original materials are licensed under the [Apache License, version 2](https://www.apache.org/licenses/LICENSE-2.0).  All source code and solutions are original as are most of the problems.  In some cases, problems are adapted from other sources.  In these cases, I have attributed the source.
+All original materials are licensed under the [Apache License, version 2](https://www.apache.org/licenses/LICENSE-2.0).  All source code and solutions are original as are most of the problems.  In some cases, problems are adapted from other sources.  In these cases, I have tried to attribute the source.
 
 ## Bugs, comments, contributions
 

@@ -6,6 +6,7 @@
 \usepackage{caption}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{hyperref}
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
@@ -21,12 +22,17 @@
 \newtheorem*{note}{Note}
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist 
-
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\urlstyle{same}
 \lstdefinestyle{mystyle}{
 	backgroundcolor=\color{backcolour},   
 	commentstyle=\color{codegreen},
@@ -45,12 +51,14 @@
 	showtabs=false,                  
 	tabsize=2
 }
-
 \lstset{style=mystyle}
 \begin{document}
 
 \section*{Problem}
 Joe and Moe are sitting on the porch at the complex talking about their awesome children.  Moe has forgotten the ages of Joe's three kids and Joe plays a little game with him.  He notices that the number on the house across the street is the sum of their ages and he tells Moe that the product of the ages is 36.  Moe says that is not enough information.  Joe says, ``Yeah, I guess not.  I will give you a hint.  The oldest one is named after you."  Moe then knows the answer.  What is it?
+\\
+\\
+\textit{Source:} This problem is adapted from a similar problem from \href{https://www.cartalk.com}{Car Talk}
 
 \newpage
 \section*{Solution}

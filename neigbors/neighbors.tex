@@ -6,6 +6,7 @@
 \usepackage{caption}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{hyperref}
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
@@ -21,7 +22,13 @@
 \newtheorem*{note}{Note}
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist 
-
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\urlstyle{same}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -51,6 +58,9 @@
 
 \section*{Problem}
 Matty has decided that she may as well get into the hospitality business, given the growing housing needs of her family.  Huey has developed an innovative building design that allows each floor with rooms on it to be a 5 x 5 block with rooms arranged in a grid.  So imagine a checkerboard with 5 rows and 5 columns.  Their awesome Pegs++ PMS / CRS combo allows them to book whole floors for groups.  One day, a very quirky group of ``foreign" (as in from outside Colorado City) tourists arrive and they don't like their assigned rooms.  In particular, each person prefers any of the rooms adjacent to the one they have assigned (right, left, up or down, not diagonal).  What is the minimum number of moves that Huey has to execute in Pegs++ to get each person in a room that they prefer?
+\\
+\\
+\textit{Source:} This was inspired by a problem from \href{https://www.cartalk.com}{Car Talk}
 
 \newpage
 \section*{Solution}
