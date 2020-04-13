@@ -1,0 +1,71 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\urlstyle{same}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+\begin{document}
+
+\section*{Problem}
+Suppose that you have one thousand single dollar bills and you want to put it into a set of envelopes in such a way that any amount up to \$1000 can be made by combining the contents of some subset of the envelopes.  What is the smallest number of envelopes that you need and how would you stuff them?
+\\
+\\
+\textit{Source:} This problem is from \href{https://www.cartalk.com}{Car Talk}
+
+\section*{Solution}
+ Use 1, 2, 4, 8, 16, 32, 64, 128, 256 and 489.  To see why this will give all the sums, note that every number has a binary expansion and the expansion of any number up to 511 is a sum of the first nine powers of 2.  To get the rest of the numbers, you can start with 489 and then get the remainder in the same way.  
+ \\
+ \\
+ What is interesting to prove is that this can't be done with fewer than 10 envelopes and this solution is unique.
+ 
+
+\end{document}
+
