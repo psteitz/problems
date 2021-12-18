@@ -1,0 +1,117 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+\begin{document}
+	
+	\section*{Problem 1}
+	(a) Find a positive integer that has exactly 237 proper factors.  An integer $m$ is proper factor of another integer $n$ if $1 < m < n$ and $n = m \times k$ for some positive integer $k$.  So for example, $12$ has proper factors $2,3,4$ and $6$.
+	\\ \\
+	\emph{Solution:}  $2^{238}$ is one such number.  Its proper factors are $2, 2^2, 2^3, ..., 2^{237}$.  Because $2$ is prime, there is no way to make more distinct proper factors by combining the powers of $2$ that $2^{238}$ contains.
+	\\\\
+	(b) Show that for every $n$ there are infinitely many integers with exactly $n$ proper factors.
+	\\\\
+	\emph{Solution:} First, there is an error in the statement of the problem (noted by Dave Jacobson).  It should be stated that $n$ must be greater than 0.  The method applied in part (a) can be used to get a number with exactly $n$ proper factors for any $n > 0$.  Note that any prime can be used in place of $2$.  This gives infinitely many different numbers with the property because there are infiinitely many primes.  These are all unique by the uniqueness of prime factorization.
+	
+	\section*{Problem 2}
+	Find a sequence of real numbers from the interval $[0,1]$ that has subsequences converging to infinitely many different values.   For example, the secuence $\{1/3, 0.2 + 1/3, 1/4, 0.2 + 1/4, 1/5, 0.2 + 1/5 ...\}$ has two convergent subsequences, the first, consisting of the even numbered terms, converges to $0$ and the one made up of the odd-numbered terms converges to $0.2$
+	\\\\
+	\emph{Solution:} (Ava Ma) Consider the sequence $$\{1, 1, 1/2, 1, 1/2, 1/3, 1, 1/2, 1/3, 1/4, 1, 1/2, 1/3, 1/4, 1/5...\}$$ This sequence contains infinitely many terms equal to each of  the terms in the arithmentic sequence $\{1, 1/2, 1/3, 1/4...\}$.  Each of these is a convergent  subsequence with a distinct limit.
+	
+	\pagebreak
+	
+	\section*{Problem 3}  
+	Consider the following strategy for betting at Roulette, assuming an American-style table with two slots out of 38 that are neither red nor black.  The gambler decides to start with a $\$1$ bet on red.  If he wins, that ends the sequence.  If he loses, he doubles the bet size for the next trial and continues in this way until red comes up and he wins or he runs out of money or hits the table limit.   Find a formula for the gambler's gain (how much he wins minus how much he loses)  as a function of the number of attempts it takes him to win.
+	\\\\
+	\emph{Solution:}  A \emph{geometric random variable} is a variable whose values are the number of trials it takes to get a success when a random experiment with two outcomes - success and failure - is performed repeatedly, with the assumption that successive trials are independent.    If $X$ is a geometric random variable with probability of success on a single trial equal to $p$, then $X$ can take any of the values $1, 2, 3, ... $ i.e., there is no upper bound to the value that $X$ can take.  For each positive integer $i$, 
+	$$P(X = i) = (1-p)^{i-1} p$$
+	To see why this is true, since the trials are independent, the probability that all of the first $i-1$ trials are failures is just the failure probability multiplied by itself $i-1$ times and the probability that this happens followed by a success is that we have above.  The number of bets that the gambler in our problem will make is a geometric random variable with $p = 18/38  \simeq 0.47$.
+	  Using the formula above, we can compute the probability distribution of the gambler's gain:
+	\\\\
+	\begin{tabular}{c c c c}
+		Number of bets&Probability&$\$$ lost &$\$$ won\\\hline
+		1&$.47$&$\$0$&$\$1$\\
+		2&$.249$&$\$1$&$\$2$\\
+		3&$.132$&$\$3$&$\$4$\\
+		...&...&...&\\
+		10&$.00155$&$\$511$&$\$512$\\
+		...&...&...&...\\
+		20&$2.71 \times 10^{-6}$&$\$524,287$&$\$524,288$\\
+		...&...&...& ...\
+	\end{tabular}
+	\\\\
+	So the gambler always ends up walking away ahead by $\$1$.  This is because $\sum_{i=0}^{n - 1} {2^i} = 2^{n} - 1.$ This can be proven by mathematical induction using the identity $1 + 2 + 2^2 + ... + 2^n = 1 + 2(1 + 2 + ... + 2^{n-1})$. 
+	\\\\
+	It is interesting to note here that the result of always walking away $\$1$ ahead does not depend on the probability of success on a single bet (in the Red/Black Roulette case, $.47$).  Decreasing the probability of success just ends up increasing the probability that more bets will be needed to get a success.  The problem with this strategy is that no matter what bound you put on the number of bets (the table limit or how much you are willing to wager), there is a non-zero probability that you will end up going beyond that and losing a big pile of \$.  The house will be happy to get that big pile and as long as the probability of success on a single trial is less than $0.5$ across all betting strategies, the house will prosper and while it may take a while for an individual using the ``double down" strategy to hit the limit, it will eventually happen and over time the house will win.
+
+	
+	\section*{Problem 4}
+	A dense linear ordering without endpoints is a set $S$ together with a binary relation $R$ satisfying the following requirements:
+	\begin{enumerate}
+		\item $R$ is irreflexive.  $sRs$ does not hold for any $s \in S$, 
+		\item $R$ is transitive.  $sRt$ and $tRw$ implies $sRw$.
+		\item $R$ is a total ordering.  For distinct $s$ and $t$ in $R$, exactly one of $sRt$ and $tRs$ is true.
+		\item $R$ has no endpoints.  For any $s$, there is $u$ such that $sRu$ and $l$ such that $lRs$.
+		\item $R$ is dense.  For all, $s,t$, if $sRt$ holds then there is another element $u$ such that $sRu$ and $uRt$.
+	\end{enumerate}
+   A dense linear ordering is an example of an \emph{abstract relational structure}, which consists of a set, called the \emph{domain} of the structure and a set of relations defined on the set.  Two abstract relational structures are \emph{isomorphic} if there is a bijection (1-1 and onto mapping) between their domains that preserves relations.  For example, consider the following two abstract relational structures.
+   $M$ has domain $\mathbb{Z}$ and one binary relation $R$ that holds whenever both arguments are even.  So for example, $2R6$ is true, but $3R6$ and $3R7$ are both false.  $N$ also has domain $\mathbb{Z}$ and one binary relation $R$ that holds iff both arguments are odd.
+  A 1-1 onto mapping that maps even numbers to odd numbers and vice-versa is an isomorphism between $N$ and $M$.
+  \\\\
+  A set is \emph{countable} if there is a 1-1 mapping from the set into the positive integers.
+  \\\\
+  Prove that any two countably infinite dense linear orderings without endpoints are isomorphic.
+  \\\\
+  \emph{Solution:} (Anna Azareyvich) 
+  Let $<A, R> and <B, S>$ be two countable dense linear orderings without endpoints.  The notation means that $A$ is a set ordered by $R$ and $B$ is a set ordered by $S$.  A concrete example of one of these is $<\mathbf{Q}, <>$ where $\mathbf{Q}$ stands for the rational numbers.  What we are showing here is that any countable dense linear ordering is isomorphic to the rathional numbers ordered in the natural way.
+  \\
+  Since $A$ and $B$ are countable, they can be enumberated as $A = a_0, a_1, ...a_n, a_{n+1}...$ and $B = b_0, b_1...b_n, b_{n+1}...$.  We will define the isomorhphism $f:A\rightarrow B$ inductively.  Start by setting $f(a_0)  = b_0$.  Now consider $b_1$.   We need to find a pre-image of $b_1$ that keeps the orderings in sync.  If  $b_0Sb_1$ then let $k$ be the smallest integer such that $a_0Ra_k$.  We know there has to be such a $k$ because the enumeration includes all elements of $A$ and there is no upper bound on the ordering.  Similarly, if   $b_1Sb_0$, let $k$ be the smallest integer such that $a_kRa_0$. Set $f(a_k) = b_1$.  Next we find a friend for $a_1$  (or more precisely, $a_i$ for the smallest $i$ such that $f(a_i)$ has not yet been defined, as it is possible that $k = 1$).  To keep the order consistent, we must set $f(a_1)$ so that the ordering of $a_0, a_k, a_1$ under $R$ is the same as that of  $b_0,b_1, f(a_1)$.  Because the ordering on $B$ is dense and has no endpoints, whatever the ordering is of $b_0, b_1$, we can find an element in the right place to preserve the isomorphism.  After setting $f(a_1)$, we then consider $b_m$ for the smallest $m$ such that $b_m$ is not in the range of $f$ so far defined.  Then we go back to consider the first $a_j$ in the $A$ ordering that has not been mapped.  Continuing back-and-forth in this way, we will eventually map every element of $A$ to some element of $B$ and every element of $B$ will be the image of some element of $A$.
+  \\\\
+  The means of constructing the isomorphism above is called the  \href{https://en.wikipedia.org/wiki/Back-and-forth_method}{back-and-forth method}.  What is proved in this problem is a special case of a more general theorem about abstract relational structures that  states that if you can fully describe the relations among elements  in a relational structure with a single sentence (in this case, the sentence says what the order is among them), then any two countable models of the associated theory are isomoprphic.  We call such theories  \href{https://en.wikipedia.org/wiki/Omega-categorical_theory}{omega-categorical}.
+\end{document}
