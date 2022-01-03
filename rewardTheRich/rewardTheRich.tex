@@ -1,0 +1,45 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+\begin{document}
+
+
+\section*{Problem}
+Let $x_0 < x_1 < … < x_{n-1}$ and $y_0 < y_1 … < y_{n - 1}$ be strictly increasing sequences of positive numbers.  Show that for any permutation $\sigma$ of $\{0, … , n-1\}$,
+$$\sum_{i = 0}^{n-1} x_i y_{\sigma(i)}< \sum_{i = 0}^{n-1} x_i y_i$$
+unless $\sigma$ is the identity permutation.  What this says is that when forming dot products of two vectors of distinct values, the product is maximized when the entries appear in the same order.
+
+\section*{Solution}
+ Let $\sigma$ be an arbitrary permutation of  $\{0, … , n-1\}$ and define $f(\sigma) = \sum_{i = 0}^{n-1} x_i y_{\sigma(i)}$.   It suffices to show that if $\sigma$ is not the identity permutation, then there is another permutation $\tau$ such that $f(\tau) > f(\sigma)$.    This is sufficient because there are only finitely many permutations of $\{0, … , n-1\}$ so $f$ must have a maximum that is attained by some permutation.  What we are showing is that no non-identity permutation can attain the maximum.
+ \\\\
+ We start by establishing a lemma.
+ \lem  If $x_1< x_2$ and $y_1 < y_2$ are positive real numbers then  $x_1 y_1 + x_2 y_2> x_1 y_2 + x_2 y_1$.
+ \proof Write $x_2 = x_1 + a$ and $y_2 = y_1 + b$ where $a$ and $b$ are positive.  Then $x_1 y_1 + x_2 y_2 = x_1 y_1 + (x_1 + a)(y_1 + b) = 2x_1y_1 + x_1 b + y_1a + ab$ and $x_1 y_2 + x_2 y_1 = x_1(y_1 + b) + (x_1 + a)y_1 = 2x_1y_1 + x_1b + y_1a,$ so since $a$ and $b$ are positive $ab$ is positve and the inequality is proved.
+ \\\\
+ Now consider an arbitrary permutation $\sigma$ of $\{0, … , n-1\}$.  If $\sigma$ is not the identity, let $i$ be the largest index such that $\sigma(i)  \ne i$. So for all $k > i$, $\sigma(k) = k$.  Since permutations are 1-1 mappings, we must have $\sigma(i) < i$ (all values above $i$ are taken by the fixed points above $i$).  Let $j = \sigma(i)$ and let $l$ be the pre-image of $i$  under $\sigma$,  so $\sigma(l) = i$.  By the lemma, if we modify $\sigma$ to make $\sigma(i) = i$ and $\sigma(l) = j$, the portion of $\sum_{i = 0}^{n-1} x_i y_{\sigma(i)}$ contributed by the indexes $i$ and $l$ will increase while the rest of the terms remain the same.  So making $\tau$ the permuation that modifies $\sigma$ in this way, we have shown what we need to show to establish the main result.
+
+
+
+
+
+
+\end{document}
+
