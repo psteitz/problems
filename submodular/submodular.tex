@@ -1,0 +1,36 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{hyperref}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{note}{Note}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+\begin{document}
+
+
+\section*{Problem}
+A  set function $f$ from the set of subsets of a finite set $N$ to the positive real numbers is called \emph{submodular} if for any $A\subseteq B \subseteq N$ and element $u$ in $N$, we have
+$$f(A \cup \{u\}) - f(A)  \geq f(B \cup \{u\}) - f(B)$$
+In many cases the \href{https://en.wikipedia.org/wiki/Greedy_algorithm}{greedy algorithm} works well to optimize submodular objective functions.  Find an example of a set $N$ and submodular function $f$ defined on $N$ such that the greedy algorithm returns a subobptimal result when trying to maximize $f$.
+
+
+\section*{Solution}
+
+
+\end{document}
+

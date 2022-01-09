@@ -27,6 +27,36 @@ a)  Let $x_0 , ... , x_{n-1}$ and $M$ be positive real numbers.  Find real num
 \\
 b) If you used the definition of the cosine between vectors as part of your solution in a), prove independently that your solutiion is correct (the definition depends on the result being established here).
 
+\section*{Solution (contributed by Juan Carlos Ramirez)}
+Consider the equivalent problem (controlling over $a$):
+minimize $-x^Ta$
+subject to $a^Ta=M$.
+Let is relax the constraint to consider the problem
+minimize $-a^Tx$
+subject to $a^Ta \leq M$.
+If we find that the minimum of this relaxed version satisfies $a^Ta=M$ then it is also a minimum of the original problem (since it contains the feasible set for the original problem). The feasible set is a closed ball, so it is compact and since $f_0(a)=-x^Tc is$  linear, it is also continuous and it achieves a minimum in the closed ball (the minimum exists). Let us also note $f_0$ is convex and infinitely differentiable.
+Let $f_1(a) = a^Ta-M$. Then $f_1$ is also convex, inifinitely differentiable, and there is a point $a_s=0$ such that $f_1(a_s)<0$. So the problem satisfies Slater's condition, and since $f_1$ is convex, any local minimum of the problem will satisfy KKT conditions (In particular any global minima), i.e.  $(a^*,\lambda^*)$:
+$f_1(a^*)<=0$ (Primal Feasibility constraint)
+$\lambda^*>=0$ (Dual Feasibility constraint)
+$\lambda^* f_1(a^*)=0$ (Complimentary slackness CS)
+$\nabla f_0(a^*)= -\lambda^* f_1(a^*)$ (First order condition FOC)
+Using the FOC, we see that $\lambda^*$ cannot be 0, since then $-x=0$, but x is a prechosen vector with all positive entries. Therefore, $\lambda^*>0$ and by CS condition $f_1(x^*)=0$ (this gives us that $*(a^*)^Ta^*=M$ and therefore both minimization problems are have the same minimum).
+Using FOC again we get
+$$ -x=-\lambda^*(2a*)$$
+
+or
+$$a^*=x/(2\lambda^*)$$
+
+and therefore
+$$(a^*)^Ta^*=x^Tx/(2\lambda^*)^2$$
+
+So
+$$(\lambda^*)=\sqrt{x^Tx}/(2\sqrt{M}$$
+
+and
+$$a^*=\sqrt{M}x/\sqrt{x^Tx}$$
+
+
 
 \end{document}
 
