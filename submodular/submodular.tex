@@ -24,7 +24,7 @@
 
 
 \section*{Problem}
-A  set function $f$ from the set of subsets of a finite set $N$ to the positive real numbers is called \emph{submodular} if for any $A\subseteq B \subseteq N$ and element $u$ in $N$, we have
+A  set function $f$ from the set of subsets of a finite set $N$ to the positive real numbers is called \emph{submodular} if for any $A\subseteq B \subseteq N$ and element $u$ in $N - B$, we have
 $$f(A \cup \{u\}) - f(A)  \geq f(B \cup \{u\}) - f(B)$$
 In many cases the \href{https://en.wikipedia.org/wiki/Greedy_algorithm}{greedy algorithm} works well to optimize submodular objective functions.  Find an example of a set $N$ and submodular function $f$ defined on $N$ such that the greedy algorithm returns a subobptimal result when trying to maximize $f$.
 
