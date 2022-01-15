@@ -1,9 +1,8 @@
 ## All Hands Problems
 
-These are problems that I have used in All Hands meetings over the last few years. I present a problem at the beginning of each meeting and ask for solutions at the end.  The problems are desigined to be solvable in a short time without advanced mathematics or complex computations. Some require calculus and some require knowledge or invention of some elementary combinatorics, but most are doable with high-school level math. 
+These are problems that I have shared in various forums over the last few years. The problems are desigined to be solvable in a short time without advanced mathematics or complex computations. Some require calculus and some require knowledge or invention of some elementary combinatorics, but most are doable with high-school level math.
 
 ## Usage
-
 
 Each directory contains the files associated with a problem. The .tex file contains the source used to generate the .pdf, possibly also using some other resource files in the problem direcory.  In a few cases, there are also subdirectories containing source code. 
  
